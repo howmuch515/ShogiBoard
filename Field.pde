@@ -69,7 +69,7 @@ class Field {
     noStroke();
     rectMode(CENTER);
     rect(width/2, height/2, wW + 60, wH + 90);
-     textSize(20);
+   textSize(20);
     stroke(1);
 
     //rect(XOFFSET, YOFFSET, wW + 50, wH + 50);
@@ -84,6 +84,11 @@ class Field {
   }
   
   void reset() {
+    for(int i=0; i<9; i++) {
+      for(int j=0; j<9; j++) {
+        hasTrout[i][j].piece = null;
+      }
+    }
   }
     
 }

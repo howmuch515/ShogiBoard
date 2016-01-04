@@ -81,6 +81,7 @@ void reset() {
   boolean result = popUpJPanel("RESET?");
   if (result){
   playerS.reset();
+  field.reset();
   form.reset();
   pieceTableA.reset();
   pieceTableB.reset();

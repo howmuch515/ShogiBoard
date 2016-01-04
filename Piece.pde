@@ -35,10 +35,11 @@ class Piece {
     return mine ? PieceSImage : PieceGImage;
   }
 
-  void setPosition(Trout trout) {
-    this.trout.onPiece = false;
-    this.trout = trout;
-    this.trout.onPiece = true;
+  void setPosition(Trout newTrout) {
+    //this.trout.onPiece = false;
+    trout.piece = null;
+    this.trout = newTrout;
+    //this.trout.onPiece = true;
     this.trout.setPiece(this);
   }
 
@@ -93,7 +94,7 @@ class Piece {
   }
 
   void take(Trout newTrout) {
-    if (newTrout.onPiece && mine != newTrout.piece.mine) newTrout.piece.taken();
+    if (newTrout.piece != null && mine != newTrout.piece.mine) newTrout.piece.taken();
   }
 
 
@@ -132,6 +133,7 @@ class Piece {
 
 
   void move(Trout newTrout) {
+    println("newTrout.piece: " + newTrout.piece);
     boolean nariFlag = false; //To Nari Item of Log System
     if (newTrout == null) {
       grabed = false;
@@ -142,14 +144,10 @@ class Piece {
           nariFlag = nari(trout, newTrout);
           grabed = false;
           clear = 255;
-          if (trout != newTrout) {//when another position click.
-
-            //LOG SYSTEM
-            log.DO(this, trout, newTrout, nariFlag, newTrout.piece);
-
-            setPosition(newTrout);
-            playerS.turnChange();
-          }
+          //LOG SYSTEM
+          log.DO(this, trout, newTrout, nariFlag, newTrout.piece);
+          setPosition(newTrout);
+          playerS.turnChange();
         }
       } else {
         if (newTrout.piece.mine != playerS.turn) {

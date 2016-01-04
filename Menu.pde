@@ -13,9 +13,9 @@ class Menu {
     this.py2 = py2;
     this.bgcol = bgcol;
     TurningSwitch = new SwitchButton(px - (px - px2)/2, 100,200, 20, true, "TURNING");
-    ResetButton = new ClickButton(px - (px - px2)/2 , 300, 70, 30, #00ff00, "RESET");
-    UndoButton  = new ClickButton(px - (px - px2)*3/4, 200,70, 30, #0000ff, "UNDO");
-    RedoButton  = new ClickButton(px -(px - px2)/4, 200, 70, 30, #ff0000, "REDO");
+    ResetButton = new ClickButton(px - (px - px2)/2 , 300, 70, 30, #00ff00, #ff0000, "RESET");
+    UndoButton  = new ClickButton(px - (px - px2)*3/4, 200,70, 30, #0000ff, #ffffff, "UNDO");
+    RedoButton  = new ClickButton(px -(px - px2)/4, 200, 70, 30, #ff0000, #000000, "REDO");
   }
 
   void showUp() {

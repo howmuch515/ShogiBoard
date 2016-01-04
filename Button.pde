@@ -1,9 +1,12 @@
 class SwitchButton {
-  int px, py, sizeX, sizeY;
+  int px, py, sizeX, sizeY, buttonPx, buttonPy;
   boolean IO;
   String label;
   color BLUE = #0000ff;
   color RED = #ff0000;
+  color WHITE = #ffffff;
+  color BLACK = #000000;
+  
   SwitchButton(int px, int py, int sizeX, int sizeY, boolean IO, String label) {
     this.px = px;
     this.py = py;
@@ -11,6 +14,8 @@ class SwitchButton {
     this.sizeY = sizeY;
     this.IO = IO;
     this.label = label;
+    this.buttonPx = px-sizeX/2+sizeY/2;
+    this.buttonPy = py;
   }
 
   void putButton() {
@@ -18,14 +23,9 @@ class SwitchButton {
   }
 
   boolean overCircle(int x, int y, int diameter) {
-    float disX = x - mouseX;
-    float disY = y - mouseY;
-    if (sqrt(sq(disX) + sq(disY)) < diameter/2 ) {
-      return true;
-    } else {
-      return false;
-    }
+    return dist(buttonPx, buttonPy, mouseX, mouseY) <= sizeY/2;
   }
+  
   void showUp() {
     noStroke();
     textSize(15);
@@ -34,35 +34,40 @@ class SwitchButton {
     rectMode(CENTER);
     rect(px,py,sizeX,sizeY);
     textAlign(CENTER);
-    fill(#000000);
+    
+    if (IO) fill(WHITE);
+    else fill(BLACK);
     text(label, px, py, sizeX, sizeY);
+    
     if (IO) fill(RED);
     else fill(BLUE);
     ellipseMode(CENTER);
-    ellipse(px-sizeX/2+sizeY/2, py, sizeY, sizeY);
+    ellipse(buttonPx, buttonPy, sizeY, sizeY);
   }
 }
 
 class ClickButton {
   int px, py, sizeX, sizeY;
-  color col;
+  color bgCol, textCol;
   String label;
-  ClickButton(int px, int py, int sizeX, int sizeY, color col, String label) {
+  ClickButton(int px, int py, int sizeX, int sizeY, color bgCol, color textCol, String label) {
     this.px = px;
     this.py = py;
-    this.col = col;
+    this.bgCol = bgCol;
+    this.textCol = textCol;
     this.label = label;
     this.sizeY = sizeY;
     this.sizeX = sizeX;
   }
 
   void showUp() {
-    fill(col);
+    fill(bgCol);
     noStroke();
     rectMode(CENTER);
     textSize(15);
     rect(px, py, sizeX, sizeY);
     fill(0);
+    fill(textCol);
     text(label, px, py, sizeX, sizeY); 
     noFill();
   }

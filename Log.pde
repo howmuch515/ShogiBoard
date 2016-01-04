@@ -59,7 +59,6 @@ class Log {
 
       //if take piece
       Piece tkpiece = LOGLIST.get(P-2).takePiece;
-      println(tkpiece);
       if (tkpiece != null) {
         tkpiece.setPosition(LOGLIST.get(P-2).newTrout);
         tkpiece.onField = true;

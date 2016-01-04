@@ -10,7 +10,7 @@ class Trout {
     this.troutWidth = troutWidth;
     this.troutHeight = troutHeight;
     this.zone = zone;
-    onPiece = false;
+    //onPiece = false;
   }
 
   void showUp() {
@@ -38,7 +38,7 @@ class Trout {
   }
 
   void setPiece(Piece piece) {
-    this.piece = piece;
+   this.piece = piece;
   }
 
   int getX() {
