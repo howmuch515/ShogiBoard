@@ -36,11 +36,9 @@ class Piece {
   }
 
   void setPosition(Trout newTrout) {
-    //this.trout.onPiece = false;
     trout.piece = null;
-    this.trout = newTrout;
-    //this.trout.onPiece = true;
-    this.trout.setPiece(this);
+    trout = newTrout;
+    trout.setPiece(this);
   }
 
   //Piece evolution.
@@ -91,10 +89,13 @@ class Piece {
     else pieceTableB.addPiece(this.name);
     nari = false;
     onField = false;
+    trout.piece = null;
   }
 
   void take(Trout newTrout) {
-    if (newTrout.piece != null && mine != newTrout.piece.mine) newTrout.piece.taken();
+    if (newTrout.piece != null && mine != newTrout.piece.mine) {
+      newTrout.piece.taken();
+    }
   }
 
 
@@ -133,7 +134,6 @@ class Piece {
 
 
   void move(Trout newTrout) {
-    println("newTrout.piece: " + newTrout.piece);
     boolean nariFlag = false; //To Nari Item of Log System
     if (newTrout == null) {
       grabed = false;
@@ -151,7 +151,6 @@ class Piece {
         }
       } else {
         if (newTrout.piece.mine != playerS.turn) {
-          take(newTrout);
           if (grabed) {
             nariFlag = nari(trout, newTrout);
             grabed = false;
@@ -159,6 +158,7 @@ class Piece {
             if (trout != newTrout) {//when another position click.
               //LOG SYSTEM
               log.DO(this, trout, newTrout, nariFlag, newTrout.piece);
+              take(newTrout);
               setPosition(newTrout);
               playerS.turnChange();
             }
@@ -169,6 +169,9 @@ class Piece {
         }
       }
     }
+    //println("newTrout.piece: " + newTrout.piece);
+    //println("Piece.trout: " + trout);
+    println("---------");
   }
 }
 

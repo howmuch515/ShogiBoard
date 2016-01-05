@@ -1,6 +1,5 @@
 class Trout {
   int x, y, troutWidth, troutHeight;
-  boolean onPiece;
   int zone;
   Piece piece;
 
@@ -15,6 +14,7 @@ class Trout {
 
   void showUp() {
     if (onMouse()) fill(#ff0000, 100);
+    else if(piece != null) fill(#888888);
     else noFill(); 
     //if(zone == 0) fill(#ff0000);
     //else if(zone == 1) fill(#00ff00);

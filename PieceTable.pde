@@ -17,7 +17,7 @@ class PieceTable {
     if (mine) {
       for (int i=0; i<3; i++) {
         for (int j=0; j<3; j++) {
-          tableTrout[i][j] = new Trout(i*wW/3 + X, j*wH/3 + Y, wW/3, wH/3, 0);
+          tableTrout[i][j] = new Trout(i*wW/3 + X, j*wH/3 + Y, wW/3, wH/3, 2);
         }
       }
     } else {
@@ -63,9 +63,14 @@ class PieceTable {
           if (piece.name == tablePiece.name  && !piece.onField ) {
             if (piece.mine == mine) {
               log.DO(piece, piece.trout, newTrout, false, null);
-              piece.setPosition(newTrout);
+              newTrout.setPiece(piece);
+              piece.trout = newTrout;
               piece.onField = true;
+              
+              tablePiece.clear = 255;
+              piece.grabed = false;
               rmPiece(tablePiece.name);
+              
               playerS.turnChange();
               break;
             }

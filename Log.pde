@@ -37,10 +37,11 @@ class Log {
         LOGLIST.remove(i);
         i--;
       }
-        LOGLIST.set(P-1, new Record(P, playerS.turnPlayerName(), piece, oldTrout, newTrout, nari, takePiece));
+      LOGLIST.set(P-1, new Record(P, playerS.turnPlayerName(), piece, oldTrout, newTrout, nari, takePiece));
     } else {
       LOGLIST.add(new Record(P, playerS.turnPlayerName(), piece, oldTrout, newTrout, nari, takePiece));
     }
+    println("LOGLIST.get(P): " + LOGLIST.get(P-1));
     P++;
   }
 
@@ -51,26 +52,34 @@ class Log {
       Piece tmpPiece = LOGLIST.get(P-2).piece;
       Trout tmpTrout = LOGLIST.get(P-2).oldTrout;
 
-      //if nari
-      if (LOGLIST.get(P-2).nari) {
-        tmpPiece.nari = false;
-        //playerS.turnChange();
+      if (tmpTrout.zone == 2) {
+        tmpPiece.taken();
+      } else {
+        //if nari
+        if (LOGLIST.get(P-2).nari) {
+          tmpPiece.nari = false;
+          //playerS.turnChange();
+        }
+
+        tmpPiece.setPosition(tmpTrout);
+
+        //if take piece
+        Piece tkpiece = LOGLIST.get(P-2).takePiece;
+        if (tkpiece != null) {
+          LOGLIST.get(P-2).newTrout.setPiece(tkpiece);
+          tkpiece.trout = LOGLIST.get(P-2).newTrout;
+          tkpiece.onField = true;
+          if (pieceTableA.mine == playerS.turn) pieceTableB.rmPiece(tkpiece.name);
+          else pieceTableA.rmPiece(tkpiece.name);
+          tkpiece.mine = !tkpiece.mine;
+        }
       }
 
-      //if take piece
-      Piece tkpiece = LOGLIST.get(P-2).takePiece;
-      if (tkpiece != null) {
-        tkpiece.setPosition(LOGLIST.get(P-2).newTrout);
-        tkpiece.onField = true;
-        if (pieceTableA.mine == playerS.turn) pieceTableB.rmPiece(tkpiece.name);
-        else pieceTableA.rmPiece(tkpiece.name);
-        tkpiece.mine = !tkpiece.mine;
-      }
-      tmpPiece.setPosition(tmpTrout);
       playerS.turnChange();
       P--;
     }
   }
+
 
   void REDO() {
     if (P >= LOGLIST.size()+1) println("NO MORE REDO!");
@@ -93,7 +102,7 @@ class Log {
       P++;
     }
   }
-  
+
   void reset() {
     LOGLIST.clear();
     P = 1;
