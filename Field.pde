@@ -83,10 +83,11 @@ class Field {
     //printNum(XOFFSET+20, YOFFSET-5, wW/9);
   }
   
+  
   void reset() {
     for(int i=0; i<9; i++) {
       for(int j=0; j<9; j++) {
-        hasTrout[i][j].piece = null;
+        hasTrout[i][j].onPiece = false;
       }
     }
   }

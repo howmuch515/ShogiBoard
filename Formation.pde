@@ -38,7 +38,7 @@ class Formation {
 
   void showUp() {
     for (Piece piece : pieceList) {
-      if (piece.getOnField()) piece.showUp();
+      if (piece.onField) piece.showUp();
     }
   }
 
@@ -52,12 +52,30 @@ class Formation {
 
   void grab() {
     for (Piece piece : pieceList) {
-      if(piece.onField) piece.grab();
+      if (piece.onField) piece.grab();
     }
   }
   
+  int countPieceOnSameTrout(Trout trout) {
+    int counter = 0;
+    for (Piece piece: pieceList) {
+      if (piece.trout == trout) {
+        counter++;
+      }
+    }
+    return counter;
+  }
+
+  Piece getPieceOnMouse() {
+    for (Piece piece : pieceList) {
+      if (piece.onMouse() && piece.onField) return piece;
+    }
+    return null;
+  }
+
   void reset() {
-    pieceList.clear();for (int i=0; i<9; i++) {
+    pieceList.clear();
+    for (int i=0; i<9; i++) {
       pieceList.add(new Fu(true, field.hasTrout[i][6], field.getTroutWidth(), field.getTroutHeight()));
     }
     pieceList.add(new Kyo(true, field.hasTrout[0][8], field.getTroutWidth(), field.getTroutHeight()));

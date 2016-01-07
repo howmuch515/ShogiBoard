@@ -1,7 +1,8 @@
 class Trout {
   int x, y, troutWidth, troutHeight;
   int zone;
-  Piece piece;
+  //Piece piece;
+  boolean onPiece;
 
   Trout(int x, int y, int troutWidth, int troutHeight, int zone) {
     this.x = x;
@@ -9,16 +10,12 @@ class Trout {
     this.troutWidth = troutWidth;
     this.troutHeight = troutHeight;
     this.zone = zone;
-    //onPiece = false;
+    onPiece = false;
   }
 
   void showUp() {
     if (onMouse()) fill(#ff0000, 100);
-    else if(piece != null) fill(#888888);
     else noFill(); 
-    //if(zone == 0) fill(#ff0000);
-    //else if(zone == 1) fill(#00ff00);
-    //else if(zone == -1) fill(#0000ff);
     rectMode(CORNER);
     rect(x, y, troutWidth, troutHeight);
   }
@@ -37,9 +34,13 @@ class Trout {
     }
   }
 
-  void setPiece(Piece piece) {
-   this.piece = piece;
+  void setPiece(){
+    onPiece = true;
   }
+  //void setPiece(Piece piece) {
+ 
+   //this.piece = piece;
+  //}
 
   int getX() {
     return x;

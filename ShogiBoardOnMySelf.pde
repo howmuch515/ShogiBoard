@@ -57,7 +57,7 @@ void draw() {
 
 void mouseClicked() {
     if (form.grabedPiece() != null) {
-      form.grabedPiece().move(field.getTroutOnMouse());
+      form.grabedPiece().move(field.getTroutOnMouse(), form.getPieceOnMouse());
     } else if (pieceTableA.grabedPiece() != null) {
       pieceTableA.putField(pieceTableA.grabedPiece(), field.getTroutOnMouse());
     } else if (pieceTableB.grabedPiece() != null) {

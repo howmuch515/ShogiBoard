@@ -36,9 +36,9 @@ class Piece {
   }
 
   void setPosition(Trout newTrout) {
-    trout.piece = null;
+    trout.onPiece = false;
+    newTrout.onPiece = true;
     trout = newTrout;
-    trout.setPiece(this);
   }
 
   //Piece evolution.
@@ -87,14 +87,12 @@ class Piece {
     mine = !mine;
     if (mine) pieceTableA.addPiece(this.name);
     else pieceTableB.addPiece(this.name);
-    nari = false;
     onField = false;
-    trout.piece = null;
   }
 
-  void take(Trout newTrout) {
-    if (newTrout.piece != null && mine != newTrout.piece.mine) {
-      newTrout.piece.taken();
+  void take(Piece tkpiece) {
+    if (mine != tkpiece.mine) {
+      tkpiece.taken();
     }
   }
 
@@ -107,12 +105,20 @@ class Piece {
     image(modeImage, trout.getX(), trout.getY(), wW, wH);
   }
 
+  boolean onMouse() {
+    if (menu.TurningSwitch.IO) {
+      if (playerS.turn) return abs(trout.getX() + wW/2 - mouseX) <= wW/2 && abs(trout.getY() + wH/2 - mouseY) <= wH/2;
+      else {
+        int X = width - mouseX;
+        int Y = height - mouseY;
+        return abs(trout.getX() + wW/2 - X) <= wW/2 && abs(trout.getY() + wH/2 - Y) <= wH/2;
+      }
+    } else {
+      return abs(trout.getX() + wW/2 - mouseX) <= wW/2 && abs(trout.getY() + wH/2 - mouseY) <= wH/2;
+    }
+  }
   boolean getGrabed() {
     return grabed;
-  }
-
-  boolean onMouse() {
-    return trout.onMouse();
   }
 
   boolean getOnField() {
@@ -120,48 +126,51 @@ class Piece {
   }
 
   void grab() {
-    if (playerS.turn == mine) {
-      if (onMouse() && grabed) {
-        grabed  = false;
-        clear = 255;
-      } else if (onMouse() && !grabed) {
-        grabed = true; 
-        clear = 100;
+    if (playerS.turn == mine && onField) {
+      if (onMouse()) {
+        if (grabed) {
+          grabed  = false;
+          clear = 255;
+        } else {
+          grabed = true; 
+          clear = 100;
+        }
       }
     }
   }
 
 
 
-  void move(Trout newTrout) {
+  void move(Trout newTrout, Piece tkpiece) {
     boolean nariFlag = false; //To Nari Item of Log System
     if (newTrout == null) {
       grabed = false;
       clear = 255;
     } else {
-      if (newTrout.piece == null) {
+      if (!newTrout.onPiece) {
         if (grabed) {
           nariFlag = nari(trout, newTrout);
           grabed = false;
           clear = 255;
           //LOG SYSTEM
-          log.DO(this, trout, newTrout, nariFlag, newTrout.piece);
+          log.DO(this, trout, newTrout, nariFlag, null, false);
           setPosition(newTrout);
           playerS.turnChange();
         }
       } else {
-        if (newTrout.piece.mine != playerS.turn) {
+        if (tkpiece.mine != playerS.turn) {
+          //if (newTrout.piece.mine != playerS.turn) {
           if (grabed) {
             nariFlag = nari(trout, newTrout);
             grabed = false;
             clear = 255;
-            if (trout != newTrout) {//when another position click.
-              //LOG SYSTEM
-              log.DO(this, trout, newTrout, nariFlag, newTrout.piece);
-              take(newTrout);
-              setPosition(newTrout);
-              playerS.turnChange();
-            }
+            //if (trout != newTrout) {//when another position click.
+            //LOG SYSTEM
+            log.DO(this, trout, newTrout, this.nari, tkpiece, false);
+            take(tkpiece);
+            setPosition(newTrout);
+            playerS.turnChange();
+            //}
           }
         } else {
           grabed = false;
@@ -169,9 +178,6 @@ class Piece {
         }
       }
     }
-    //println("newTrout.piece: " + newTrout.piece);
-    //println("Piece.trout: " + trout);
-    println("---------");
   }
 }
 

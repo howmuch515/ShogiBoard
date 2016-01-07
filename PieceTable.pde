@@ -23,7 +23,7 @@ class PieceTable {
     } else {
       for (int i=2; i>=0; i--) {
         for (int j=2; j>=0; j--) {
-          tableTrout[i][j] = new Trout(- i*wW/3 + X + wW*2/3, -j*wH/3 + Y + wH*2/3, wW/3, wH/3, 0);
+          tableTrout[i][j] = new Trout(- i*wW/3 + X + wW*2/3, -j*wH/3 + Y + wH*2/3, wW/3, wH/3, 2);
         }
       }
     }
@@ -58,22 +58,21 @@ class PieceTable {
       tablePiece.clear = 255;
       tablePiece.grabed = false;
     } else {
-      if (newTrout.piece == null) {
+      if (!newTrout.onPiece) {
         for (Piece piece : form.pieceList) {
-          if (piece.name == tablePiece.name  && !piece.onField ) {
-            if (piece.mine == mine) {
-              log.DO(piece, piece.trout, newTrout, false, null);
-              newTrout.setPiece(piece);
+          if (piece.name == tablePiece.name  && !piece.onField && piece.mine == playerS.turn) {
+              log.DO(piece, piece.trout, newTrout, false, null, true);
               piece.trout = newTrout;
-              piece.onField = true;
-              
+              piece.nari = false;
+              newTrout.onPiece = true;
+              piece.onField = true;              
               tablePiece.clear = 255;
               piece.grabed = false;
               rmPiece(tablePiece.name);
               
               playerS.turnChange();
               break;
-            }
+            
           }
         }
       } else {
@@ -134,7 +133,7 @@ class PieceTable {
 
   Piece grabedPiece() {
     for (Piece piece : pieceObjectSet.values()) {
-      if (piece.getGrabed())  return piece;
+      if (piece.grabed)  return piece;
     }
     return null;
   }
