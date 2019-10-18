@@ -1,10 +1,11 @@
 class Trout {
-  int x, y, troutWidth, troutHeight;
+  int pointX, pointY, x, y, troutWidth, troutHeight;
   int zone;
-  //Piece piece;
   boolean onPiece;
 
-  Trout(int x, int y, int troutWidth, int troutHeight, int zone) {
+  Trout(int pointX, int pointY, int x, int y, int troutWidth, int troutHeight, int zone) {
+    this.pointX = pointX;
+    this.pointY = pointY;
     this.x = x;
     this.y = y;
     this.troutWidth = troutWidth;
@@ -21,7 +22,6 @@ class Trout {
   }
 
   boolean onMouse() {
-    //return x <= mouseX && mouseX < x+troutWidth && y <= mouseY && mouseY < y+troutHeight;
     if (menu.TurningSwitch.IO) {
       if (playerS.turn) return x <= mouseX && mouseX < x+troutWidth && y <= mouseY && mouseY < y+troutHeight;
       else {
@@ -37,10 +37,14 @@ class Trout {
   void setPiece(){
     onPiece = true;
   }
-  //void setPiece(Piece piece) {
 
-   //this.piece = piece;
-  //}
+  int getPointX() {
+    return pointX;
+  }
+
+  int getPointY() {
+    return pointY;
+  }
 
   int getX() {
     return x;

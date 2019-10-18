@@ -4,6 +4,7 @@ class Piece {
   boolean nari;
   boolean grabed;
   boolean onField;
+  ArrayList<int[]> action_ranges;
 
   PImage PieceSImage;
   PImage PieceGImage;
@@ -141,39 +142,57 @@ class Piece {
 
   void move(Trout newTrout, Piece tkpiece) {
 
-    boolean nariFlag = false; //To Nari Item of Log System
+    for(int[] i: this.action_ranges) {
+      // check action range
+      int target_troutX, target_troutY;
+      if(mine) {
+        target_troutX = this.trout.getPointX() - i[0];
+        target_troutY = this.trout.getPointY() - i[1];
+      } else {
+        target_troutX = this.trout.getPointX() + i[0];
+        target_troutY = this.trout.getPointY() + i[1];
+      }
 
-    if (newTrout == null) {
-      grabed = false;
-      clear = 255;
-    } else {
-      if (!newTrout.onPiece) {
-        if (grabed) {
-          nariFlag = nari(trout, newTrout);
+      if (target_troutX == newTrout.getPointX() && target_troutY == newTrout.getPointY()) {
+        boolean nariFlag = false; //To Nari Item of Log System
+
+        if (newTrout == null) {
           grabed = false;
           clear = 255;
+        } else {
+          if (!newTrout.onPiece) {
+            if (grabed) {
+              nariFlag = nari(trout, newTrout);
+              grabed = false;
+              clear = 255;
 
-          //LOG SYSTEM
-          log.DO(this, trout, newTrout, nariFlag, null, false);
-          setPosition(newTrout);
-          playerS.turnChange();
+              //LOG SYSTEM
+              log.DO(this, trout, newTrout, nariFlag, null, false);
+              setPosition(newTrout);
+              playerS.turnChange();
+            }
+          } else {
+            if (tkpiece.mine != playerS.turn) {
+              if (grabed) {
+                nariFlag = nari(trout, newTrout);
+                grabed = false;
+                clear = 255;
+
+                //LOG SYSTEM
+                log.DO(this, trout, newTrout, this.nari, tkpiece, false);
+                take(tkpiece);
+                setPosition(newTrout);
+                playerS.turnChange();
+              }
+            } else {
+              grabed = false;
+              clear = 255;
+            }
+          }
         }
       } else {
-        if (tkpiece.mine != playerS.turn) {
-          if (grabed) {
-            nariFlag = nari(trout, newTrout);
-            grabed = false;
-            clear = 255;
-            //LOG SYSTEM
-            log.DO(this, trout, newTrout, this.nari, tkpiece, false);
-            take(tkpiece);
-            setPosition(newTrout);
-            playerS.turnChange();
-          }
-        } else {
-          grabed = false;
-          clear = 255;
-        }
+        grabed = false;
+        clear = 255;
       }
     }
   }
@@ -184,6 +203,9 @@ class Fu extends Piece {
   Fu(boolean mine, Trout trout, int wW, int wH) {
     super(mine, trout, wW, wH, "img/pieces/Sfu.png", "img/pieces/Gfu.png", "img/pieces/Sto.png", "img/pieces/Gto.png");
     name = "Fu";
+    action_ranges = new ArrayList<int[]>();
+    int tmp[] = {0,1};
+    action_ranges.add(tmp);
   }
 }
 

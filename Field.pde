@@ -17,7 +17,7 @@ class Field {
         if ( 0 <= j && j < 3) zone = -1;
         else if (3 <= j && j < 6) zone = 0;
         else if (6 <= j && j < 9) zone = 1;
-        hasTrout[i][j] = new Trout(i*wW/9 + XOFFSET, j*wH/9 + YOFFSET, wW/9, wH/9, zone);
+        hasTrout[i][j] = new Trout(i, j, i*wW/9 + XOFFSET, j*wH/9 + YOFFSET, wW/9, wH/9, zone);
       }
       fieldImage = loadImage("img/field.png");
     }
@@ -69,7 +69,7 @@ class Field {
     noStroke();
     rectMode(CENTER);
     rect(width/2, height/2, wW + 60, wH + 90);
-   textSize(20);
+    textSize(20);
     stroke(1);
 
     //rect(XOFFSET, YOFFSET, wW + 50, wH + 50);

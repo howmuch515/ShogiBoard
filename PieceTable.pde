@@ -17,13 +17,13 @@ class PieceTable {
     if (mine) {
       for (int i=0; i<3; i++) {
         for (int j=0; j<3; j++) {
-          tableTrout[i][j] = new Trout(i*wW/3 + X, j*wH/3 + Y, wW/3, wH/3, 2);
+          tableTrout[i][j] = new Trout(-1, -1, i*wW/3 + X, j*wH/3 + Y, wW/3, wH/3, 2);
         }
       }
     } else {
       for (int i=2; i>=0; i--) {
         for (int j=2; j>=0; j--) {
-          tableTrout[i][j] = new Trout(- i*wW/3 + X + wW*2/3, -j*wH/3 + Y + wH*2/3, wW/3, wH/3, 2);
+          tableTrout[i][j] = new Trout(-1, -1, - i*wW/3 + X + wW*2/3, -j*wH/3 + Y + wH*2/3, wW/3, wH/3, 2);
         }
       }
     }
