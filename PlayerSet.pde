@@ -10,7 +10,7 @@ class PlayerSet {
     SPlayer = new Player("SENTE", true, pieceTableA);
     GPlayer = new Player("GOTE" , false, pieceTableB);
   }
-    
+
   //Player Class define.
   class Player {
     String name;
@@ -23,9 +23,9 @@ class PlayerSet {
       this.playerTurn = playerTurn;
       this.timer = new Timer(200, 200, playerTurn, 0, 3, 0);
       this.pieceTable = pieceTable;
-    }   
+    }
   }
-  
+
   //Timer
   class Timer {
     int px, py;
@@ -34,7 +34,7 @@ class PlayerSet {
     int minutes;
     int seconds;
     float timer;
-    
+
     Timer(int px, int py, boolean playerTurn, int hour, int minutes, int seconds) {
       this.playerTurn = playerTurn;
       this.px = playerTurn ? px : width - px;
@@ -44,15 +44,15 @@ class PlayerSet {
       this.seconds = seconds;
       this.timer = hour * 60 * 60 + minutes * 60 + seconds;
     }
-    
+
     void run() {
       timer -= 1.0 /FRAME;
     }
-    
+
     void reset() {
       timer = hour * 60 * 60 + minutes * 60 + seconds;
     }
-    
+
     void showUp() {
       textSize(30);
       textAlign(CENTER);
@@ -61,13 +61,13 @@ class PlayerSet {
         int lastTime = (int) timer;
          int m = lastTime / 60;
          int s = lastTime % 60;
-    
+
         String timerDisplay =  m + "m" + s + "s";
         if(playerTurn) text(timerDisplay, width-100, height-100);
         else text(timerDisplay, 100, 100);
     }
   }
-  
+
   void showUp() {
     //if(turn) SPlayer.timer.run();
     //else GPlayer.timer.run();
@@ -77,11 +77,11 @@ class PlayerSet {
   void turnChange() {
     this.turn = !this.turn;
   }
-  
+
   String turnPlayerName() {
     return turn ? SPlayer.name : GPlayer.name;
   }
-  
+
    //Resignation function
    void resign() {
       if(turn) {
@@ -93,12 +93,12 @@ class PlayerSet {
       }
       gameOver();
     }
-  
+
   //GAME RESET
   void reset() {
     this.turn = true;
   }
-  
+
   //returnning winner name
   String getWinnerName() {
     return SPlayer.winner  ? SPlayer.name : GPlayer.name;

@@ -44,7 +44,7 @@ class Piece {
   //Piece evolution.
   boolean nari(Trout oldTrout, Trout newTrout) {
     boolean result = false;
-    //Confirm about Nari(Yes/No)  
+    //Confirm about Nari(Yes/No)
     if (!nari) {
       if (mine) {
         if (oldTrout.zone != -1 && newTrout.zone == -1) {
@@ -132,7 +132,7 @@ class Piece {
           grabed  = false;
           clear = 255;
         } else {
-          grabed = true; 
+          grabed = true;
           clear = 100;
         }
       }

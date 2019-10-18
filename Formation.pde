@@ -11,10 +11,10 @@ class Formation {
     pieceList.add(new Kyo(true, field.hasTrout[8][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(true, field.hasTrout[1][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(true, field.hasTrout[7][8], field.getTroutWidth(), field.getTroutHeight()));
-    pieceList.add(new Gin(true, field.hasTrout[2][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Gin(true, field.hasTrout[6][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(true, field.hasTrout[3][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(true, field.hasTrout[5][8], field.getTroutWidth(), field.getTroutHeight())); 
+    pieceList.add(new Gin(true, field.hasTrout[2][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Gin(true, field.hasTrout[6][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(true, field.hasTrout[3][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(true, field.hasTrout[5][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Ou(true, field.hasTrout[4][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kaku(true, field.hasTrout[1][7], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Hi(true, field.hasTrout[7][7], field.getTroutWidth(), field.getTroutHeight()));
@@ -27,10 +27,10 @@ class Formation {
     pieceList.add(new Kyo(false, field.hasTrout[8][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(false, field.hasTrout[1][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(false, field.hasTrout[7][0], field.getTroutWidth(), field.getTroutHeight()));
-    pieceList.add(new Gin(false, field.hasTrout[2][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Gin(false, field.hasTrout[6][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(false, field.hasTrout[3][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(false, field.hasTrout[5][0], field.getTroutWidth(), field.getTroutHeight())); 
+    pieceList.add(new Gin(false, field.hasTrout[2][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Gin(false, field.hasTrout[6][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(false, field.hasTrout[3][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(false, field.hasTrout[5][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Ou(false, field.hasTrout[4][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Hi(false, field.hasTrout[1][1], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kaku(false, field.hasTrout[7][1], field.getTroutWidth(), field.getTroutHeight()));
@@ -55,7 +55,7 @@ class Formation {
       if (piece.onField) piece.grab();
     }
   }
-  
+
   int countPieceOnSameTrout(Trout trout) {
     int counter = 0;
     for (Piece piece: pieceList) {
@@ -82,10 +82,10 @@ class Formation {
     pieceList.add(new Kyo(true, field.hasTrout[8][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(true, field.hasTrout[1][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(true, field.hasTrout[7][8], field.getTroutWidth(), field.getTroutHeight()));
-    pieceList.add(new Gin(true, field.hasTrout[2][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Gin(true, field.hasTrout[6][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(true, field.hasTrout[3][8], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(true, field.hasTrout[5][8], field.getTroutWidth(), field.getTroutHeight())); 
+    pieceList.add(new Gin(true, field.hasTrout[2][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Gin(true, field.hasTrout[6][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(true, field.hasTrout[3][8], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(true, field.hasTrout[5][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Ou(true, field.hasTrout[4][8], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kaku(true, field.hasTrout[1][7], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Hi(true, field.hasTrout[7][7], field.getTroutWidth(), field.getTroutHeight()));
@@ -98,10 +98,10 @@ class Formation {
     pieceList.add(new Kyo(false, field.hasTrout[8][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(false, field.hasTrout[1][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kei(false, field.hasTrout[7][0], field.getTroutWidth(), field.getTroutHeight()));
-    pieceList.add(new Gin(false, field.hasTrout[2][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Gin(false, field.hasTrout[6][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(false, field.hasTrout[3][0], field.getTroutWidth(), field.getTroutHeight())); 
-    pieceList.add(new Kin(false, field.hasTrout[5][0], field.getTroutWidth(), field.getTroutHeight())); 
+    pieceList.add(new Gin(false, field.hasTrout[2][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Gin(false, field.hasTrout[6][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(false, field.hasTrout[3][0], field.getTroutWidth(), field.getTroutHeight()));
+    pieceList.add(new Kin(false, field.hasTrout[5][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Ou(false, field.hasTrout[4][0], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Hi(false, field.hasTrout[1][1], field.getTroutWidth(), field.getTroutHeight()));
     pieceList.add(new Kaku(false, field.hasTrout[7][1], field.getTroutWidth(), field.getTroutHeight()));
