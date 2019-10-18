@@ -2,7 +2,7 @@ class Field {
   int wH;
   int wW;
   int XOFFSET, YOFFSET;
-  PImage fieldImage; 
+  PImage fieldImage;
   Trout hasTrout[][] = new Trout[9][9];
 
   Field(int wW, int wH) {
@@ -54,7 +54,7 @@ class Field {
       text(JPNumList[i], X, Y+offset*i);
     }
   }
-  
+
   void printNum(int X, int Y, int offset) {
     textSize(20);
     fill(0,0,0);

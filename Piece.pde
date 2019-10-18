@@ -96,7 +96,6 @@ class Piece {
     }
   }
 
-
   void showUp() {
     imageMode(CORNER);
     tint(255, clear);
@@ -117,6 +116,7 @@ class Piece {
       return abs(trout.getX() + wW/2 - mouseX) <= wW/2 && abs(trout.getY() + wH/2 - mouseY) <= wH/2;
     }
   }
+
   boolean getGrabed() {
     return grabed;
   }
@@ -139,10 +139,10 @@ class Piece {
     }
   }
 
-
-
   void move(Trout newTrout, Piece tkpiece) {
+
     boolean nariFlag = false; //To Nari Item of Log System
+
     if (newTrout == null) {
       grabed = false;
       clear = 255;
@@ -152,6 +152,7 @@ class Piece {
           nariFlag = nari(trout, newTrout);
           grabed = false;
           clear = 255;
+
           //LOG SYSTEM
           log.DO(this, trout, newTrout, nariFlag, null, false);
           setPosition(newTrout);
@@ -159,18 +160,15 @@ class Piece {
         }
       } else {
         if (tkpiece.mine != playerS.turn) {
-          //if (newTrout.piece.mine != playerS.turn) {
           if (grabed) {
             nariFlag = nari(trout, newTrout);
             grabed = false;
             clear = 255;
-            //if (trout != newTrout) {//when another position click.
             //LOG SYSTEM
             log.DO(this, trout, newTrout, this.nari, tkpiece, false);
             take(tkpiece);
             setPosition(newTrout);
             playerS.turnChange();
-            //}
           }
         } else {
           grabed = false;
@@ -180,8 +178,6 @@ class Piece {
     }
   }
 }
-
-
 
 
 class Fu extends Piece {
@@ -211,6 +207,7 @@ class  Gin extends Piece {
     name = "Gin";
   }
 }
+
 class  Kin extends Piece {
   Kin(boolean mine, Trout trout, int wW, int wH) {
     super(mine, trout, wW, wH, "img/pieces/Skin.png", "img/pieces/Gkin.png", "img/pieces/Skin.png", "img/pieces/Gkin.png");
