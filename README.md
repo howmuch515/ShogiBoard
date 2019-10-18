@@ -1,4 +1,4 @@
-# ShogiBoardOnMySelf
+# ShogiBoard
 
 This is a Shogi-Board written with Processing.
 
