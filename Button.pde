@@ -6,7 +6,7 @@ class SwitchButton {
   color RED = #ff0000;
   color WHITE = #ffffff;
   color BLACK = #000000;
-  
+
   SwitchButton(int px, int py, int sizeX, int sizeY, boolean IO, String label) {
     this.px = px;
     this.py = py;
@@ -25,7 +25,7 @@ class SwitchButton {
   boolean overCircle(int x, int y, int diameter) {
     return dist(buttonPx, buttonPy, mouseX, mouseY) <= sizeY/2;
   }
-  
+
   void showUp() {
     noStroke();
     textSize(15);
@@ -34,11 +34,11 @@ class SwitchButton {
     rectMode(CENTER);
     rect(px,py,sizeX,sizeY);
     textAlign(CENTER);
-    
+
     if (IO) fill(WHITE);
     else fill(BLACK);
     text(label, px, py, sizeX, sizeY);
-    
+
     if (IO) fill(RED);
     else fill(BLUE);
     ellipseMode(CENTER);
@@ -68,14 +68,14 @@ class ClickButton {
     rect(px, py, sizeX, sizeY);
     fill(0);
     fill(textCol);
-    text(label, px, py, sizeX, sizeY); 
+    text(label, px, py, sizeX, sizeY);
     noFill();
   }
 
   boolean overButton() {
     return abs(px - mouseX) <= sizeX/2 && abs(py - mouseY) <= sizeY/2;
   }
-  
+
   void putButton() {
     if(overButton()) {
       switch(label) {

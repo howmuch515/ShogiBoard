@@ -8,7 +8,7 @@ boolean popUpJPanel(String msg) {
   panel.add(new JLabel(msg));
 
   int r = JOptionPane.showConfirmDialog(
-    null, 
+    null,
     panel, "COMFIRM", // title of dialog
     JOptionPane.YES_NO_OPTION, // option
     JOptionPane.QUESTION_MESSAGE);  // message type

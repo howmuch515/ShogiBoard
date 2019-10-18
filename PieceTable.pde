@@ -1,6 +1,6 @@
 class PieceTable {
   int X, Y;
-  int wW; 
+  int wW;
   int wH;
   Trout tableTrout[][] = new Trout[3][3];
   HashMap<String, Integer> pieceSet = new HashMap<String, Integer>();
@@ -65,14 +65,12 @@ class PieceTable {
               piece.trout = newTrout;
               piece.nari = false;
               newTrout.onPiece = true;
-              piece.onField = true;              
+              piece.onField = true;
               tablePiece.clear = 255;
               piece.grabed = false;
               rmPiece(tablePiece.name);
-              
               playerS.turnChange();
               break;
-            
           }
         }
       } else {

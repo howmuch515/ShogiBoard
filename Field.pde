@@ -82,8 +82,7 @@ class Field {
     //printJPNum(width-XOFFSET+8, YOFFSET+25, wH/9);
     //printNum(XOFFSET+20, YOFFSET-5, wW/9);
   }
-  
-  
+
   void reset() {
     for(int i=0; i<9; i++) {
       for(int j=0; j<9; j++) {
@@ -91,5 +90,4 @@ class Field {
       }
     }
   }
-    
 }

@@ -15,7 +15,7 @@ class Trout {
 
   void showUp() {
     if (onMouse()) fill(#ff0000, 100);
-    else noFill(); 
+    else noFill();
     rectMode(CORNER);
     rect(x, y, troutWidth, troutHeight);
   }
@@ -38,7 +38,7 @@ class Trout {
     onPiece = true;
   }
   //void setPiece(Piece piece) {
- 
+
    //this.piece = piece;
   //}
 

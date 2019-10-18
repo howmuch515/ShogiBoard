@@ -87,7 +87,7 @@ void reset() {
   pieceTableB.reset();
   log.reset();
  }
-}  
+}
 
 //GAMEOVER
 void gameOver() {

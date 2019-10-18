@@ -31,7 +31,7 @@ class Menu {
     textSize(20);
     text("MENU", (px+px2)/2, py+30, 100, 50);
   }
-  
+
   void putButton() {
     TurningSwitch.putButton();
     ResetButton.putButton();
